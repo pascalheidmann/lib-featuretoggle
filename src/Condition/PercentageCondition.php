@@ -1,33 +1,26 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Type;
+namespace PascalHeidmann\FeatureToggle\Condition;
 
 use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
 
-class PercentageFeatureToggle implements FeatureToggle
+class PercentageCondition implements ConditionInterface
 {
 	public const KEY = 'percentage';
 
-	private string $key;
 	private float $threshold;
 
-	public function __construct(string $key, float $threshold)
+	public function __construct(float $threshold)
 	{
-		$this->key = $key;
 		$this->threshold = $threshold;
-	}
-
-	public function getKey(): string
-	{
-		return $this->key;
 	}
 
 	public function evaluate(array $data = []): bool
 	{
 		$percentage = $data[self::KEY] ?? null;
 		if (!is_float($percentage) && !is_int($percentage)) {
-			throw new FeatureToggleRequiredParameterMissingException($this->key, self::KEY);
+			throw new FeatureToggleRequiredParameterMissingException(self::class, self::KEY);
 		}
 		return $percentage <= $this->threshold;
 	}

@@ -20,5 +20,10 @@
 		"psr-4": {
 			"PascalHeidmann\\FeatureToggle\\": "src/"
 		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"PascalHeidmann\\FeatureToggle\\Tests\\": "tests/"
+		}
 	}
 }

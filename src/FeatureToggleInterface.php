@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Type;
+namespace PascalHeidmann\FeatureToggle;
 
-interface FeatureToggle
+interface FeatureToggleInterface
 {
 	public function getKey(): string;
 
