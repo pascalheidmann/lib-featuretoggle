@@ -6,6 +6,9 @@ namespace PascalHeidmann\FeatureToggle\FeatureToggle;
 use JetBrains\PhpStorm\Pure;
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
 
+/**
+ * Shortcut for generic feature toggle which always evaluate to $value
+ */
 class StaticFeatureToggle extends FeatureToggle
 {
 	#[Pure]

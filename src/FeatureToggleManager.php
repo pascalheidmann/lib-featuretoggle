@@ -16,10 +16,16 @@ class FeatureToggleManager
 		$this->featureToggleRepository = $featureToggleRepository;
 	}
 
+	public function addRepository(FeatureToggleRepositoryInterface $repository): self
+	{
+		$this->featureToggleRepository[] = $repository;
+		return $this;
+	}
+
 	/**
 	 * @param array<string, mixed> $data
 	 */
-	public function get(string $key, array $data): bool
+	public function get(string $key, array $data = []): bool
 	{
 		foreach ($this->featureToggleRepository as $repository) {
 			$featureToggle = $repository->get($key);
