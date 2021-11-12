@@ -5,5 +5,10 @@ namespace PascalHeidmann\FeatureToggle\Condition;
 
 interface ConditionInterface
 {
+	/**
+	 * @param array<string, mixed> $data
+	 *
+	 * @return bool
+	 */
 	public function evaluate(array $data = []): bool;
 }

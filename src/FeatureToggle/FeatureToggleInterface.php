@@ -1,11 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle;
+namespace PascalHeidmann\FeatureToggle\FeatureToggle;
 
 interface FeatureToggleInterface
 {
 	public function getKey(): string;
 
+	/**
+	 * @param array<string, mixed> $data
+	 *
+	 * @return bool
+	 */
 	public function evaluate(array $data = []): bool;
 }

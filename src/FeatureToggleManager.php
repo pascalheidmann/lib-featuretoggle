@@ -16,6 +16,9 @@ class FeatureToggleManager
 		$this->featureToggleRepository = $featureToggleRepository;
 	}
 
+	/**
+	 * @param array<string, mixed> $data
+	 */
 	public function get(string $key, array $data): bool
 	{
 		foreach ($this->featureToggleRepository as $repository) {

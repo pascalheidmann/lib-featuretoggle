@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PascalHeidmann\FeatureToggle\FeatureToggle;
 
 use PascalHeidmann\FeatureToggle\Condition\ConditionInterface;
-use PascalHeidmann\FeatureToggle\FeatureToggleInterface;
 
 class FeatureToggle implements FeatureToggleInterface
 {

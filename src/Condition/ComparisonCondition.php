@@ -7,24 +7,32 @@ use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissing
 use function is_float;
 use function is_int;
 
+/**
+ * @template T
+ */
 class ComparisonCondition implements ConditionInterface
 {
 	private string $dataKey;
-	/** @var mixed */
+	/** @var T */
 	private $value;
 
+	/**
+	 * @param T $value
+	 */
 	public function __construct(string $dataKey, $value)
 	{
 		$this->dataKey = $dataKey;
 		$this->value = $value;
 	}
 
+	/**
+	 * @param array<string, mixed> $data
+	 */
 	public function evaluate(array $data = []): bool
 	{
-		$value = $data[$this->dataKey] ?? null;
-		if (!is_float($value) && !is_int($value)) {
+		if (!isset($data[$this->dataKey])) {
 			throw new FeatureToggleRequiredParameterMissingException(self::class, $this->dataKey);
 		}
-		return $value === $this->value;
+		return $data[$this->dataKey] === $this->value;
 	}
 }

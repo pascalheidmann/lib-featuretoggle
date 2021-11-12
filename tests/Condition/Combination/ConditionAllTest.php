@@ -22,7 +22,7 @@ final class ConditionAllTest extends TestCase
 	}
 
 	/**
-	 * @return iterable
+	 * @return iterable<string, array{0:bool, 1: ConditionAll}>
 	 */
 	public function conditions(): iterable
 	{
