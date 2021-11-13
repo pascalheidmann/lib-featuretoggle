@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace PascalHeidmann\FeatureToggle\Tests;
 
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
+use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
+use PascalHeidmann\FeatureToggle\FeatureToggle\StaticFeatureToggle;
 use PascalHeidmann\FeatureToggle\FeatureToggleManager;
 use PascalHeidmann\FeatureToggle\Repository\ArrayFeatureToggleRepository;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +14,6 @@ use PHPUnit\Framework\TestCase;
 class FeatureToggleManagerTest extends TestCase
 {
 	/**
-	 * @return void
 	 * @test
 	 */
 	public function itReturnsCorrectFeatureToggleState(): void
@@ -22,5 +23,51 @@ class FeatureToggleManagerTest extends TestCase
 		$featureToggleManager = new FeatureToggleManager($repository);
 
 		self::assertEquals(true, $featureToggleManager->get('my-feature-toggle')); // true
+	}
+
+	/**
+	 * @test
+	 */
+	public function itTakesFirstRepositoryInstanceWithKey(): void
+	{
+		$featureToggle1 = new FeatureToggle('my-feature-toggle', new StaticCondition(true));
+		$repository = new ArrayFeatureToggleRepository($featureToggle1);
+
+		$featureToggle2 = new StaticFeatureToggle('my-feature-toggle', false);
+		$repository2 = new ArrayFeatureToggleRepository($featureToggle2);
+
+		$featureToggleManager = new FeatureToggleManager($repository, $repository2);
+
+		self::assertEquals(true, $featureToggleManager->get('my-feature-toggle')); // true
+	}
+
+	/**
+	 * @test
+	 */
+	public function itWillTriggerAnExceptionCausedByMissingFeatureToggle(): void
+	{
+		$this->expectException(FeatureToggleNotFoundException::class);
+		(new FeatureToggleManager())->get('my-non-existing-toggle');
+	}
+
+	/**
+	 * @test
+	 */
+	public function itWillAddFeatureToggleRepository(): void
+	{
+		$featureToggleManager = new FeatureToggleManager();
+		try {
+			$featureToggleManager->get('my-toggle');
+		} catch (FeatureToggleNotFoundException $exception) {
+			self::assertEquals(
+				sprintf('Feature toggle with key "%s" not found!', 'my-toggle'),
+				$exception->getMessage()
+			);
+		}
+
+		$repository = new ArrayFeatureToggleRepository(new StaticFeatureToggle('my-toggle', true));
+		$featureToggleManager->addRepository($repository);
+
+		self::assertEquals(true, $featureToggleManager->get('my-toggle'));
 	}
 }
