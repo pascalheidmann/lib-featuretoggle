@@ -9,7 +9,7 @@ use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
 
 class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
 {
-	/** @var FeatureToggle[] */
+	/** @var array<string, FeatureToggle> */
 	private array $featureToggles = [];
 
 	public function __construct(FeatureToggle ...$featureToggles)
@@ -24,7 +24,7 @@ class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
 		if ($this->hasToggle($featureToggle->getKey())) {
 			throw new DuplicateFeatureToggleInRepositoryException(self::class, $featureToggle->getKey());
 		}
-		$this->featureToggles[] = $featureToggle;
+		$this->featureToggles[$featureToggle->getKey()] = $featureToggle;
 
 		return $this;
 	}
@@ -32,17 +32,12 @@ class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
 	#[Pure]
 	public function hasToggle(string $key): bool
 	{
-		return $this->get($key) !== null;
+		return isset($this->featureToggles[$key]);
 	}
 
 	#[Pure]
 	public function get(string $key): ?FeatureToggle
 	{
-		foreach ($this->featureToggles as $featureToggle) {
-			if ($featureToggle->getKey() === $key) {
-				return $featureToggle;
-			}
-		}
-		return null;
+		return $this->featureToggles[$key] ?? null;
 	}
 }
