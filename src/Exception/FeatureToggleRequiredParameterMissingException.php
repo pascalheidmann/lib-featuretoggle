@@ -11,7 +11,7 @@ class FeatureToggleRequiredParameterMissingException extends RuntimeException im
 {
 	private const EXCEPTION_MESSAGE = 'Feature toggle "%s" requires data "%s"';
 
-	#[Pure]
+	
 	public function __construct(string $key, string $data)
 	{
 		parent::__construct(sprintf(self::EXCEPTION_MESSAGE, $key, $data));

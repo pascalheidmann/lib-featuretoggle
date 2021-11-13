@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Tests\Condition\Combination;
+namespace Tests\PascalHeidmann\FeatureToggle\Condition\Combination;
 
 use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAll;
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;

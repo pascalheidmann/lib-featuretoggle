@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Tests;
+namespace Tests\PascalHeidmann\FeatureToggle;
 
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
 use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
 use PascalHeidmann\FeatureToggle\FeatureToggle\StaticFeatureToggle;
 use PascalHeidmann\FeatureToggle\FeatureToggleManager;
-use PascalHeidmann\FeatureToggle\Repository\ArrayFeatureToggleRepository;
+use PascalHeidmann\FeatureToggle\Repository\ArrayRepository;
 use PHPUnit\Framework\TestCase;
 
 class FeatureToggleManagerTest extends TestCase
@@ -19,7 +19,7 @@ class FeatureToggleManagerTest extends TestCase
 	public function itReturnsCorrectFeatureToggleState(): void
 	{
 		$featureToggle = new FeatureToggle('my-feature-toggle', new StaticCondition(true));
-		$repository = new ArrayFeatureToggleRepository($featureToggle);
+		$repository = new ArrayRepository($featureToggle);
 		$featureToggleManager = new FeatureToggleManager($repository);
 
 		self::assertEquals(true, $featureToggleManager->get('my-feature-toggle')); // true
@@ -31,10 +31,10 @@ class FeatureToggleManagerTest extends TestCase
 	public function itTakesFirstRepositoryInstanceWithKey(): void
 	{
 		$featureToggle1 = new FeatureToggle('my-feature-toggle', new StaticCondition(true));
-		$repository = new ArrayFeatureToggleRepository($featureToggle1);
+		$repository = new ArrayRepository($featureToggle1);
 
 		$featureToggle2 = new StaticFeatureToggle('my-feature-toggle', false);
-		$repository2 = new ArrayFeatureToggleRepository($featureToggle2);
+		$repository2 = new ArrayRepository($featureToggle2);
 
 		$featureToggleManager = new FeatureToggleManager($repository, $repository2);
 
@@ -65,7 +65,7 @@ class FeatureToggleManagerTest extends TestCase
 			);
 		}
 
-		$repository = new ArrayFeatureToggleRepository(new StaticFeatureToggle('my-toggle', true));
+		$repository = new ArrayRepository(new StaticFeatureToggle('my-toggle', true));
 		$featureToggleManager->addRepository($repository);
 
 		self::assertEquals(true, $featureToggleManager->get('my-toggle'));

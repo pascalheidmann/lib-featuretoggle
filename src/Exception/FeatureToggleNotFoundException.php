@@ -10,7 +10,7 @@ class FeatureToggleNotFoundException extends RuntimeException implements Feature
 {
 	private const EXCEPTION_MESSAGE = 'Feature toggle with key "%s" not found!';
 
-	#[Pure]
+	
 	public function __construct(string $key)
 	{
 		parent::__construct(sprintf(self::EXCEPTION_MESSAGE, $key));

@@ -7,7 +7,7 @@ use JetBrains\PhpStorm\Pure;
 use PascalHeidmann\FeatureToggle\Exception\DuplicateFeatureToggleInRepositoryException;
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
 
-class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
+class ArrayRepository implements RepositoryInterface
 {
 	/** @var array<string, FeatureToggle> */
 	private array $featureToggles = [];
@@ -19,7 +19,7 @@ class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
 		}
 	}
 
-	public function addToggle(FeatureToggle $featureToggle): FeatureToggleRepositoryInterface
+	public function addToggle(FeatureToggle $featureToggle): RepositoryInterface
 	{
 		if ($this->hasToggle($featureToggle->getKey())) {
 			throw new DuplicateFeatureToggleInRepositoryException(self::class, $featureToggle->getKey());
@@ -29,13 +29,13 @@ class ArrayFeatureToggleRepository implements FeatureToggleRepositoryInterface
 		return $this;
 	}
 
-	#[Pure]
+	
 	public function hasToggle(string $key): bool
 	{
 		return isset($this->featureToggles[$key]);
 	}
 
-	#[Pure]
+	
 	public function get(string $key): ?FeatureToggle
 	{
 		return $this->featureToggles[$key] ?? null;

@@ -5,10 +5,8 @@ namespace PascalHeidmann\FeatureToggle\Repository;
 
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
 
-interface FeatureToggleRepositoryInterface
+interface RepositoryInterface
 {
-	public function addToggle(FeatureToggle $featureToggle): self;
-
 	public function hasToggle(string $key): bool;
 
 	public function get(string $key): ?FeatureToggle;

@@ -6,10 +6,10 @@
 use \PascalHeidmann\FeatureToggle\FeatureToggleManager;
 use \PascalHeidmann\FeatureToggle\Condition\StaticCondition;
 use \PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
-use \PascalHeidmann\FeatureToggle\Repository\ArrayFeatureToggleRepository;
+use \PascalHeidmann\FeatureToggle\Repository\ArrayRepository;
 
 $featureToggle = new FeatureToggle('my-feature-toggle', new StaticCondition(true));
-$repository = new ArrayFeatureToggleRepository($featureToggle);
+$repository = new ArrayRepository($featureToggle);
 $featureToggleManager = new FeatureToggleManager($repository);
 
 // ...

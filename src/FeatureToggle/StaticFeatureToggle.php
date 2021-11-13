@@ -11,7 +11,7 @@ use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
  */
 class StaticFeatureToggle extends FeatureToggle
 {
-	#[Pure]
+	
 	public function __construct(string $key, bool $value)
 	{
 		parent::__construct($key, new StaticCondition($value));

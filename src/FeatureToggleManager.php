@@ -4,19 +4,19 @@ declare(strict_types=1);
 namespace PascalHeidmann\FeatureToggle;
 
 use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
-use PascalHeidmann\FeatureToggle\Repository\FeatureToggleRepositoryInterface;
+use PascalHeidmann\FeatureToggle\Repository\RepositoryInterface;
 
 class FeatureToggleManager
 {
-	/** @var FeatureToggleRepositoryInterface[] */
+	/** @var RepositoryInterface[] */
 	private array $featureToggleRepository;
 
-	public function __construct(FeatureToggleRepositoryInterface ...$featureToggleRepository)
+	public function __construct(RepositoryInterface ...$featureToggleRepository)
 	{
 		$this->featureToggleRepository = $featureToggleRepository;
 	}
 
-	public function addRepository(FeatureToggleRepositoryInterface $repository): self
+	public function addRepository(RepositoryInterface $repository): self
 	{
 		$this->featureToggleRepository[] = $repository;
 		return $this;
