@@ -55,7 +55,7 @@ class LazyArrayRepository implements RepositoryInterface
 		$conditions = array_map(
 			static function (array $data): ConditionInterface {
 				assert(is_subclass_of($data[0], ConditionInterface::class));
-				return new ($data[0])(...($data[1] ?? []));
+				return new $data[0](...$data[1] ?? []);
 			},
 			$featureToggle[0]
 		);
