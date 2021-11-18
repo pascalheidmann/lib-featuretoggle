@@ -58,7 +58,6 @@ class MinimumNumberConditionTest extends TestCase
 	/**
 	 * @return array<string, array{0: mixed}>
 	 */
-	#[ArrayShape(['string' => "string[]"])]
 	public function invalidDataTypes(): array
 	{
 		return [

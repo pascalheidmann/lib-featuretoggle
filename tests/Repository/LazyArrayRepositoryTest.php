@@ -40,7 +40,7 @@ class LazyArrayRepositoryTest extends TestCase
 				[
 					[
 						MinimumNumberCondition::class,
-						[10],
+						[10, 'percentage'],
 					],
 					[
 						StaticCondition::class,
@@ -52,7 +52,7 @@ class LazyArrayRepositoryTest extends TestCase
 				[
 					[
 						MinimumNumberCondition::class,
-						[10],
+						[10, 'percentage'],
 					],
 					[
 						StaticCondition::class,
@@ -81,7 +81,7 @@ class LazyArrayRepositoryTest extends TestCase
 	 */
 	public function featureToggles(): array
 	{
-		$conditionAll = new ConditionAll(new MinimumNumberCondition(10), new StaticCondition(true));
+		$conditionAll = new ConditionAll(new MinimumNumberCondition(10, 'percentage'), new StaticCondition(true));
 		$conditionAny = new ConditionAny(new TrueCondition(), new FalseCondition());
 
 		return [
