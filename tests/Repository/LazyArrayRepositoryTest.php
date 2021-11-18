@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\PascalHeidmann\FeatureToggle\Repository;
+namespace PascalHeidmann\FeatureToggleTests\Repository;
 
 use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAll;
 use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
 use PascalHeidmann\FeatureToggle\Condition\FalseCondition;
-use PascalHeidmann\FeatureToggle\Condition\PercentageCondition;
+use PascalHeidmann\FeatureToggle\Condition\MinimumNumberCondition;
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
 use PascalHeidmann\FeatureToggle\Condition\TrueCondition;
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
@@ -39,7 +39,7 @@ class LazyArrayRepositoryTest extends TestCase
 			'implicit-all' => [
 				[
 					[
-						PercentageCondition::class,
+						MinimumNumberCondition::class,
 						[10],
 					],
 					[
@@ -51,7 +51,7 @@ class LazyArrayRepositoryTest extends TestCase
 			ConditionAll::class => [
 				[
 					[
-						PercentageCondition::class,
+						MinimumNumberCondition::class,
 						[10],
 					],
 					[
@@ -81,7 +81,7 @@ class LazyArrayRepositoryTest extends TestCase
 	 */
 	public function featureToggles(): array
 	{
-		$conditionAll = new ConditionAll(new PercentageCondition(10), new StaticCondition(true));
+		$conditionAll = new ConditionAll(new MinimumNumberCondition(10), new StaticCondition(true));
 		$conditionAny = new ConditionAny(new TrueCondition(), new FalseCondition());
 
 		return [

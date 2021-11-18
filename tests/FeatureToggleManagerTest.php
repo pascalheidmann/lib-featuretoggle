@@ -3,8 +3,12 @@ declare(strict_types=1);
 
 namespace Tests\PascalHeidmann\FeatureToggle;
 
+use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
+use PascalHeidmann\FeatureToggle\Condition\MinimumNumberCondition;
+use PascalHeidmann\FeatureToggle\Condition\PercentageCondition;
 use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
 use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
+use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
 use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
 use PascalHeidmann\FeatureToggle\FeatureToggle\StaticFeatureToggle;
 use PascalHeidmann\FeatureToggle\FeatureToggleManager;
@@ -69,5 +73,35 @@ class FeatureToggleManagerTest extends TestCase
 		$featureToggleManager->addRepository($repository);
 
 		self::assertEquals(true, $featureToggleManager->get('my-toggle'));
+	}
+
+	/**
+	 * @test
+	 */
+	public function itUsesDefaultData(): void
+	{
+		$manager = new FeatureToggleManager(
+			new ArrayRepository(
+				new FeatureToggle(
+					'my-toggle',
+					new ConditionAny(
+						new MinimumNumberCondition(10, 'percentage1'),
+						new MinimumNumberCondition(10, 'percentage2'),
+					)
+				)
+			)
+		);
+
+		self::assertEquals(false, $manager->get('my-toggle', ['percentage1' => 0, 'percentage2' => 0]));
+		self::assertEquals(true, $manager->get('my-toggle', ['percentage1' => 10, 'percentage2' => 0]));
+
+		$manager->addDefaultData(['percentage1' => 10]);
+		self::assertEquals(false, $manager->get('my-toggle', ['percentage1' => 0, 'percentage2' => 0]));
+		self::assertEquals(true, $manager->get('my-toggle', ['percentage1' => 10, 'percentage2' => 0]));
+		self::assertEquals(true, $manager->get('my-toggle', ['percentage2' => 0]));
+
+		$manager->resetDefaultData();
+		$this->expectException(FeatureToggleRequiredParameterMissingException::class);
+		$manager->get('my-toggle', ['percentage2' => 0]);
 	}
 }
