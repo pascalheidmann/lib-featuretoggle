@@ -5,7 +5,7 @@ namespace PascalHeidmann\FeatureToggle\Condition\Combination;
 
 use PascalHeidmann\FeatureToggle\Condition\ConditionInterface;
 
-class ConditionAny implements ConditionInterface
+class ConditionAny implements ConditionInterface, ConditionContainer
 {
 	/** @var ConditionInterface[] */
 	private array $featureToggles;
