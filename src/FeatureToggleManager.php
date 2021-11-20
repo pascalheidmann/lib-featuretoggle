@@ -6,7 +6,7 @@ namespace PascalHeidmann\FeatureToggle;
 use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
 use PascalHeidmann\FeatureToggle\Repository\RepositoryInterface;
 
-class FeatureToggleManager
+class FeatureToggleManager implements FeatureToggleManagerInterface
 {
 	/** @var RepositoryInterface[] */
 	private array $featureToggleRepository;
