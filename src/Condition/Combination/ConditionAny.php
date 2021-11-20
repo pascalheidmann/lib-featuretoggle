@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Condition\Combination;
+namespace FeatureToggle\Condition\Combination;
 
-use PascalHeidmann\FeatureToggle\Condition\ConditionInterface;
+use FeatureToggle\Condition\ConditionInterface;
 
 class ConditionAny implements ConditionInterface, ConditionContainer
 {

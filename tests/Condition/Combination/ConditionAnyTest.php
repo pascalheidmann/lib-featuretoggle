@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggleTests\Condition\Combination;
+namespace FeatureToggle\Tests\Condition\Combination;
 
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
-use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
+use FeatureToggle\Condition\Combination\ConditionAny;
+use FeatureToggle\Condition\StaticCondition;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny
+ * @covers \FeatureToggle\Condition\Combination\ConditionAny
  */
 final class ConditionAnyTest extends TestCase
 {

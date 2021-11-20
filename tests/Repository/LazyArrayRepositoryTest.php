@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggleTests\Repository;
+namespace FeatureToggle\Tests\Repository;
 
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAll;
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
-use PascalHeidmann\FeatureToggle\Condition\FalseCondition;
-use PascalHeidmann\FeatureToggle\Condition\MinimumNumberCondition;
-use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
-use PascalHeidmann\FeatureToggle\Condition\TrueCondition;
-use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
-use PascalHeidmann\FeatureToggle\Repository\LazyArrayRepository;
+use FeatureToggle\Condition\Combination\ConditionAll;
+use FeatureToggle\Condition\Combination\ConditionAny;
+use FeatureToggle\Condition\FalseCondition;
+use FeatureToggle\Condition\MinimumNumberCondition;
+use FeatureToggle\Condition\StaticCondition;
+use FeatureToggle\Condition\TrueCondition;
+use FeatureToggle\FeatureToggle\FeatureToggle;
+use FeatureToggle\Repository\LazyArrayRepository;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \PascalHeidmann\FeatureToggle\Repository\LazyArrayRepository
+ * @covers \FeatureToggle\Repository\LazyArrayRepository
  */
 class LazyArrayRepositoryTest extends TestCase
 {

@@ -3,10 +3,10 @@
 ## Usage
 
 ```php
-use \PascalHeidmann\FeatureToggle\FeatureToggleManager;
-use \PascalHeidmann\FeatureToggle\Condition\StaticCondition;
-use \PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
-use \PascalHeidmann\FeatureToggle\Repository\ArrayRepository;
+use \FeatureToggle\FeatureToggleManager;
+use \FeatureToggle\Condition\StaticCondition;
+use \FeatureToggle\FeatureToggle\FeatureToggle;
+use \FeatureToggle\Repository\ArrayRepository;
 
 $featureToggle = new FeatureToggle('my-feature-toggle', new StaticCondition(true));
 $repository = new ArrayRepository($featureToggle);

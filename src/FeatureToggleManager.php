@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle;
+namespace FeatureToggle;
 
-use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
-use PascalHeidmann\FeatureToggle\Repository\RepositoryInterface;
+use FeatureToggle\Exception\FeatureToggleNotFoundException;
+use FeatureToggle\Repository\RepositoryInterface;
 
 class FeatureToggleManager implements FeatureToggleManagerInterface
 {

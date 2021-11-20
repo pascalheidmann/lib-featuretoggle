@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggleTests\Condition;
+namespace FeatureToggle\Tests\Condition;
 
 use JetBrains\PhpStorm\ArrayShape;
-use PascalHeidmann\FeatureToggle\Condition\MinimumNumberCondition;
-use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
+use FeatureToggle\Condition\MinimumNumberCondition;
+use FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 

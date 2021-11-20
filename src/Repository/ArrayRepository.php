@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Repository;
+namespace FeatureToggle\Repository;
 
-use PascalHeidmann\FeatureToggle\Exception\DuplicateFeatureToggleInRepositoryException;
-use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
+use FeatureToggle\Exception\DuplicateFeatureToggleInRepositoryException;
+use FeatureToggle\FeatureToggle\FeatureToggle;
 
 class ArrayRepository implements RepositoryInterface
 {

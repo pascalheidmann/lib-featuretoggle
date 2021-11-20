@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\FeatureToggle;
+namespace FeatureToggle\FeatureToggle;
 
 use JetBrains\PhpStorm\Pure;
-use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
+use FeatureToggle\Condition\StaticCondition;
 
 /**
  * Shortcut for generic feature toggle which always evaluate to $value

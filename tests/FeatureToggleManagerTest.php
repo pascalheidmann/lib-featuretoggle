@@ -1,18 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\PascalHeidmann\FeatureToggle;
+namespace FeatureToggle\Tests;
 
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
-use PascalHeidmann\FeatureToggle\Condition\MinimumNumberCondition;
-use PascalHeidmann\FeatureToggle\Condition\PercentageCondition;
-use PascalHeidmann\FeatureToggle\Condition\StaticCondition;
-use PascalHeidmann\FeatureToggle\Exception\FeatureToggleNotFoundException;
-use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
-use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
-use PascalHeidmann\FeatureToggle\FeatureToggle\StaticFeatureToggle;
-use PascalHeidmann\FeatureToggle\FeatureToggleManager;
-use PascalHeidmann\FeatureToggle\Repository\ArrayRepository;
+use FeatureToggle\Condition\Combination\ConditionAny;
+use FeatureToggle\Condition\MinimumNumberCondition;
+use FeatureToggle\Condition\StaticCondition;
+use FeatureToggle\Exception\FeatureToggleNotFoundException;
+use FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
+use FeatureToggle\FeatureToggle\FeatureToggle;
+use FeatureToggle\FeatureToggle\StaticFeatureToggle;
+use FeatureToggle\FeatureToggleManager;
+use FeatureToggle\Repository\ArrayRepository;
 use PHPUnit\Framework\TestCase;
 
 class FeatureToggleManagerTest extends TestCase

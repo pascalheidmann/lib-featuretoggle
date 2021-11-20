@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Condition\Combination;
+namespace FeatureToggle\Condition\Combination;
 
 interface ConditionContainer
 {

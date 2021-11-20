@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\FeatureToggle;
+namespace FeatureToggle\FeatureToggle;
 
-use PascalHeidmann\FeatureToggle\Condition\ConditionInterface;
+use FeatureToggle\Condition\ConditionInterface;
 
 class FeatureToggle implements FeatureToggleInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Condition;
+namespace FeatureToggle\Condition;
 
-use PascalHeidmann\FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
+use FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
 
 class MinimumNumberCondition implements ConditionInterface
 {

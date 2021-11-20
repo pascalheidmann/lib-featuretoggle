@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Exception;
+namespace FeatureToggle\Exception;
 
 use JetBrains\PhpStorm\Pure;
 use RuntimeException;

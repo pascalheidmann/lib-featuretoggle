@@ -19,12 +19,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"PascalHeidmann\\FeatureToggle\\": "src/"
+			"FeatureToggle\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"PascalHeidmann\\FeatureToggleTests\\": "tests/"
+			"FeatureToggle\\Tests\\": "tests/"
 		}
 	}
 }

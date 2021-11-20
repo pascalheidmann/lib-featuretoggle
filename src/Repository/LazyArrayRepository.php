@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PascalHeidmann\FeatureToggle\Repository;
+namespace FeatureToggle\Repository;
 
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAll;
-use PascalHeidmann\FeatureToggle\Condition\Combination\ConditionAny;
-use PascalHeidmann\FeatureToggle\Condition\ConditionInterface;
-use PascalHeidmann\FeatureToggle\FeatureToggle\FeatureToggle;
+use FeatureToggle\Condition\Combination\ConditionAll;
+use FeatureToggle\Condition\Combination\ConditionAny;
+use FeatureToggle\Condition\ConditionInterface;
+use FeatureToggle\FeatureToggle\FeatureToggle;
 
 class LazyArrayRepository implements RepositoryInterface
 {
