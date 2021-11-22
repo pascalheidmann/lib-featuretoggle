@@ -10,9 +10,9 @@ use PHPUnit\Framework\TestCase;
 class ComparisonConditionTest extends TestCase
 {
 	/**
-	 * @param bool $expected
-	 * @param      $data
-	 * @param      $comparison
+	 * @param bool  $expected
+	 * @param mixed $data
+	 * @param mixed $comparison
 	 *
 	 * @test
 	 * @dataProvider dataProvider
@@ -23,6 +23,9 @@ class ComparisonConditionTest extends TestCase
 		self::assertEquals($expected, $condition->evaluate(['key' => $data]));
 	}
 
+	/**
+	 * @return iterable<string, array{0: bool, 1: mixed, 2: mixed}>
+	 */
 	public function dataProvider(): iterable
 	{
 		yield 'string #1' => [
@@ -59,6 +62,12 @@ class ComparisonConditionTest extends TestCase
 			false,
 			[1 => 'foo', 2 => 'bar'],
 			[2 => 'bar', 1 => 'foo'],
+		];
+
+		yield 'mixed' => [
+			false,
+			'foo',
+			123,
 		];
 	}
 
