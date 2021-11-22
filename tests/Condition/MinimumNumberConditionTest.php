@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace FeatureToggle\Tests\Condition;
 
-use JetBrains\PhpStorm\ArrayShape;
 use FeatureToggle\Condition\MinimumNumberCondition;
 use FeatureToggle\Exception\FeatureToggleRequiredParameterMissingException;
 use PHPUnit\Framework\TestCase;

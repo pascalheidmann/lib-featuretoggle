@@ -26,5 +26,13 @@
 		"psr-4": {
 			"FeatureToggle\\Tests\\": "tests/"
 		}
+	},
+	"scripts": {
+		"check": [
+			"@phpunit",
+			"@phpstan"
+		],
+		"phpunit": "vendor/bin/phpunit",
+		"phpstan": "vendor/bin/phpstan"
 	}
 }
