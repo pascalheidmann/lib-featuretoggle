@@ -1,5 +1,7 @@
 {
 	"name": "pascalheidmann/feature-toggle",
+	"license": "MIT",
+	"readme": "README.md",
 	"type": "library",
 	"version": "0.1.0",
 	"authors": [
