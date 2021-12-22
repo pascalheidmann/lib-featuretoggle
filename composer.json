@@ -20,7 +20,9 @@
 		"jetbrains/phpstorm-attributes": "^1.0"
 	},
 	"suggest": {
-		"laminas/laminas-modulemanager": "If you want to use this library in your laminas project with ease"
+		"laminas/laminas-modulemanager": "If you want to use this library in your laminas project with ease",
+		"symfony/dependency-injection": "For Symfony integration",
+		"symfony/http-kernel": "For Symfony integration"
 	},
 	"autoload": {
 		"psr-4": {
